@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grid_item_spacing">0.5dp</dimen>
+    <dimen name="space_items_text">2dp</dimen>
+    <dimen name="space_items_text_block">8dp</dimen>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.example.motionlayouttelegram.ui.main.MainViewModel" />
+
+        <variable
+            name="model"
+            type="MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/base_background"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motion_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layoutDescription="@xml/main_fragment_scene">
+
+            <LinearLayout
+                android:id="@+id/top_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#233243"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <ImageView
+                    android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_back_arrow" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:id="@+id/menu_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_video" />
+                <ImageView
+                    android:id="@+id/button_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_call" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anatoly Smirnow"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="start|center_vertical"
+                app:layout_constraintEnd_toEndOf="@id/user_status"
+                app:layout_constraintStart_toStartOf="@id/top_bar_layout"
+                app:layout_constraintTop_toTopOf="@id/top_bar_layout"
+                app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+                tools:text="name" />
+            <TextView
+                android:id="@+id/user_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:text="last seen recently"
+                android:textColor="#9aa3b2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
+                app:layout_constraintStart_toStartOf="@id/top_bar_layout"
+                app:layout_constraintTop_toTopOf="@id/user_status"
+                app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+                tools:text="last seen recently" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/image_preview"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+                app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
+                app:layout_constraintStart_toStartOf="@+id/top_bar_layout"
+                app:layout_constraintTop_toTopOf="@id/top_bar_layout"
+                tools:src="@drawable/ic_launcher_background" />
+
+<!--            1f2b3b-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/name_of_chat"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:elevation="5dp"-->
+            <!--                android:ellipsize="end"-->
+            <!--                android:maxLines="1"-->
+            <!--                android:text="@{model.name}"-->
+            <!--                android:textColor="#ffffff"-->
+            <!--                android:textSize="17sp"-->
+            <!--                tools:text="name" />-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:id="@+id/name_of_chat_large"-->
+            <!--                android:elevation="1dp"-->
+            <!--                android:padding="10dp">-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:ellipsize="end"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:layout_marginStart="10dp"-->
+            <!--                    android:text="@{model.name}"-->
+            <!--                    android:textColor="#ffffff"-->
+            <!--                    android:textSize="28sp"-->
+            <!--                    tools:text="name" />-->
+            <!--            </LinearLayout>-->
+
+            <!--        <include-->
+            <!--            android:id="@+id/layout_profile_metadata"-->
+            <!--            layout="@layout/layout_info_block"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginStart="10dp"-->
+            <!--            android:layout_marginEnd="10dp"-->
+            <!--            android:layout_marginTop="8dp"-->
+            <!--            android:layout_marginBottom="8dp"-->
+            <!--            app:layout_constraintEnd_toEndOf="@+id/parent"-->
+            <!--            app:layout_constraintStart_toStartOf="@+id/parent"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/image_preview"-->
+            <!--            app:model="@{model}" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
+                app:layout_constraintStart_toStartOf="@id/top_bar_layout"
+                app:layout_constraintTop_toBottomOf="@id/top_bar_layout"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_media" />
+            <!--            android:layout_marginStart="10dp"-->
+            <!--            android:layout_marginTop="20dp"-->
+            <!--            android:layout_marginEnd="10dp"-->
+            <!--            android:clipToPadding="false"-->
+            <!--            android:orientation="vertical"-->
+            <!--            android:scrollbarStyle="insideOverlay"-->
+            <!--            android:scrollbars="vertical"-->
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+    </LinearLayout>
+</layout>
