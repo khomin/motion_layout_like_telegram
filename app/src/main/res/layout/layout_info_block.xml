@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <import type="com.example.motionlayouttelegram.ui.main.MainViewModel" />
+
         <variable
             name="model"
             type="MainViewModel" />
@@ -14,86 +17,97 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:scaleType="centerCrop">
-        <!-- info -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_items_text"
-            android:text="Info"
-            android:textColor="#68b4e5"
-            android:textSize="12sp" />
+        android:background="#1f2b3b"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_items_text"
-            android:text="8-800-222-2222"
-            android:textColor="#ffffff"
-            android:textSize="12sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mobile"
-            android:textColor="#95a0ad"
-            android:textSize="12sp" />
-        <!-- login name -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_items_text_block"
-            android:layout_marginBottom="@dimen/space_items_text"
-            android:text="@{'@' + model.name}"
-            android:textColor="#ffffff"
-            android:textSize="12sp"
-            tools:text="Email Name" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username"
-            android:textColor="#95a0ad"
-            android:textSize="12sp" />
-        <!-- notifications -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
 
+            <!-- info -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_items_text"
+                android:text="Info"
+                android:textColor="#68b4e5"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_items_text"
+                android:text="8-800-222-2222"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mobile"
+                android:textColor="#95a0ad"
+                android:textSize="12sp" />
+            <!-- login name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_items_text_block"
+                android:layout_marginBottom="@dimen/space_items_text"
+                android:text="@{'@' + model.name}"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                tools:text="Email Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="#95a0ad"
+                android:textSize="12sp" />
+            <!-- notifications -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_items_text_block"
-                    android:layout_marginBottom="@dimen/space_items_text"
-                    android:text="@{'@' + model.name}"
-                    android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    tools:text="Notifications" />
+                    android:orientation="vertical">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_items_text_block"
+                        android:layout_marginBottom="@dimen/space_items_text"
+                        android:text="@{'@' + model.name}"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        tools:text="Notifications" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="On"
+                        android:textColor="#95a0ad"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="On"
-                    android:textColor="#95a0ad"
-                    android:textSize="12sp" />
+                    android:src="@drawable/ic_switch_on" />
             </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_switch_on" />
         </LinearLayout>
     </LinearLayout>
 </layout>

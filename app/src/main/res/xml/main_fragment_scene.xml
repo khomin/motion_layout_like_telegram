@@ -7,13 +7,27 @@
         app:autoCompleteMode="spring"
         app:constraintSetEnd="@id/step2"
         app:constraintSetStart="@id/step1"
-        app:duration="500">
+        app:duration="700">
         <OnSwipe
             app:dragDirection="dragDown"
             app:maxAcceleration="100"
             app:touchAnchorId="@id/top_bar_layout"
             app:touchAnchorSide="bottom"
             app:touchRegionId="@id/top_bar_layout" />
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="0"
+                app:motionTarget="@id/send_msg_button" />
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="10"
+                app:motionTarget="@id/send_msg_button" />
+            <KeyAttribute
+                android:alpha="1"
+                app:framePosition="100"
+                app:motionTarget="@id/send_msg_button" />
+        </KeyFrameSet>
     </Transition>
 
     <Transition
@@ -35,18 +49,19 @@
             android:id="@+id/top_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/image_preview"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout"
             app:layout_constraintVertical_bias="0.2">
             <CustomAttribute
@@ -55,12 +70,12 @@
         </Constraint>
         <Constraint
             android:id="@+id/user_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="350dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/image_preview"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout"
             app:layout_constraintVertical_bias="0.8">
             <CustomAttribute
@@ -71,85 +86,128 @@
             android:id="@+id/image_preview"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout">
             <CustomAttribute
                 app:attributeName="roundPercent"
                 app:customFloatValue="1" />
         </Constraint>
         <Constraint
-            android:id="@+id/recycler_media"
+            android:id="@+id/send_msg_button"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="25dp"
+            android:elevation="3dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+            app:layout_constraintEnd_toEndOf="@id/top_bar_layout" />
+        <Constraint
+            android:id="@+id/layout_profile_metadata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginTop="-100dp"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/parent"
+            app:layout_constraintStart_toStartOf="@+id/parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@+id/recycler_media"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
             app:layout_constraintStart_toStartOf="@id/top_bar_layout"
-            app:layout_constraintTop_toBottomOf="@id/top_bar_layout" />
+            app:layout_constraintTop_toBottomOf="@id/top_bar_layout"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/step2">
         <Constraint
             android:id="@+id/top_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
+            android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toTopOf="@id/top_bar_layout"
-            app:layout_constraintVertical_bias="0.4">
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@id/image_preview"
+            app:layout_constraintStart_toEndOf="@+id/image_preview"
+            app:layout_constraintTop_toTopOf="@id/image_preview"
+            app:layout_constraintVertical_bias="0.0">
             <CustomAttribute
                 app:attributeName="textSize"
-                app:customFloatValue="15" />
+                app:customFloatValue="20" />
         </Constraint>
         <Constraint
             android:id="@+id/user_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toTopOf="@id/top_bar_layout"
-            app:layout_constraintVertical_bias="0.6">
+            android:layout_width="350dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@id/image_preview"
+            app:layout_constraintStart_toEndOf="@+id/image_preview"
+            app:layout_constraintTop_toTopOf="@id/image_preview"
+            app:layout_constraintVertical_bias="1">
             <CustomAttribute
                 app:attributeName="textSize"
-                app:customFloatValue="10" />
+                app:customFloatValue="12" />
         </Constraint>
         <Constraint
             android:id="@+id/image_preview"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout">
             <CustomAttribute
                 app:attributeName="roundPercent"
                 app:customFloatValue="1" />
         </Constraint>
-
+        <Constraint
+            android:id="@+id/send_msg_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="25dp"
+            android:elevation="3dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_bar_layout"/>
+        <Constraint
+            android:id="@+id/layout_profile_metadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="0dp"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/parent"
+            app:layout_constraintStart_toStartOf="@+id/parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_bar_layout" />
         <Constraint
             android:id="@+id/recycler_media"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+            android:visibility="visible"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
             app:layout_constraintStart_toStartOf="@id/top_bar_layout"
-            app:layout_constraintTop_toBottomOf="@id/top_bar_layout" />
+            app:layout_constraintTop_toBottomOf="@id/layout_profile_metadata"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/step3">
@@ -157,18 +215,19 @@
             android:id="@+id/top_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout"
             app:layout_constraintVertical_bias="0.93">
             <CustomAttribute
@@ -177,13 +236,13 @@
         </Constraint>
         <Constraint
             android:id="@+id/user_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="1dp"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/top_bar_layout"
             app:layout_constraintVertical_bias="0.98">
             <CustomAttribute
@@ -194,422 +253,45 @@
             android:id="@+id/image_preview"
             android:layout_width="0dp"
             android:layout_height="400dp"
-            android:elevation="0dp"
+            android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"
             app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintVertical_bias="@null"
             app:layout_constraintStart_toStartOf="@+id/top_bar_layout"
-            app:layout_constraintTop_toTopOf="@id/top_bar_layout">
+            app:layout_constraintTop_toTopOf="@id/top_bar_layout"
+            app:layout_constraintVertical_bias="@null">
             <CustomAttribute
                 app:attributeName="roundPercent"
                 app:customFloatValue="0" />
         </Constraint>
         <Constraint
+            android:id="@+id/send_msg_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="25dp"
+            android:visibility="visible"
+            android:elevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_bar_layout"/>
+        <Constraint
+            android:id="@+id/layout_profile_metadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="0dp"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/parent"
+            app:layout_constraintStart_toStartOf="@+id/parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_bar_layout" />
+        <Constraint
             android:id="@+id/recycler_media"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@id/top_bar_layout"
             app:layout_constraintStart_toStartOf="@id/top_bar_layout"
-            app:layout_constraintTop_toBottomOf="@id/top_bar_layout" />
+            app:layout_constraintTop_toBottomOf="@id/layout_profile_metadata"/>
     </ConstraintSet>
 </MotionScene>
-
-
-    <!--        <KeyFrameSet>-->
-    <!--            <KeyAttribute-->
-    <!--                android:alpha="0"-->
-    <!--                app:framePosition="0"-->
-    <!--                app:motionTarget="@id/motion_toolbar" />-->
-    <!--            <KeyAttribute-->
-    <!--                android:alpha="0"-->
-    <!--                app:framePosition="70"-->
-    <!--                app:motionTarget="@id/motion_toolbar" />-->
-    <!--            <KeyAttribute-->
-    <!--                android:alpha="1"-->
-    <!--                app:framePosition="100"-->
-    <!--                app:motionTarget="@id/motion_toolbar" />-->
-    <!--        </KeyFrameSet>-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/motion_toolbar"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="?attr/actionBarSize"-->
-    <!--            android:visibility="invisible"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
-    <!--            android:id="@+id/motion_toolbar"-->
-    <!--            android:layout_height="?attr/actionBarSize"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            android:layout_width="match_parent"/>-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/recycler_gallery"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="10dp"-->
-    <!--            android:layout_marginTop="20dp"-->
-    <!--            android:layout_marginEnd="10dp"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintStart_toStartOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/recycler_media"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="10dp"-->
-    <!--            android:layout_marginTop="20dp"-->
-    <!--            android:layout_marginEnd="10dp"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintStart_toStartOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/motion_toolbar"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="?attr/actionBarSize"-->
-    <!--            android:visibility="invisible"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/app_bar_layout">-->
-    <!--            <CustomAttribute-->
-    <!--                app:attributeName="background"-->
-    <!--                app:customColorDrawableValue="@color/transparent"/>-->
-    <!--        </Constraint>-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/touch_view"-->
-    <!--            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintStart_toStartOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/recycler_gallery"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="10dp"-->
-    <!--            android:layout_marginTop="20dp"-->
-    <!--            android:layout_marginEnd="10dp"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintStart_toStartOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/motion_toolbar"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="?attr/actionBarSize"-->
-    <!--            android:visibility="visible"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/app_bar_layout">-->
-    <!--            <CustomAttribute-->
-    <!--                app:attributeName="background"-->
-    <!--                app:customColorDrawableValue="@color/colorBlueDark"/>-->
-    <!--        </Constraint>-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/touch_view"-->
-    <!--            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintStart_toStartOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout" />-->
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-    <!--<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--    xmlns:app="http://schemas.android.com/apk/res-auto">-->
-
-    <!--    &lt;!&ndash;        app:springStiffness="500"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:springDamping="30"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:springMass="1"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:autoCompleteMode="spring"&ndash;&gt;-->
-
-    <!--&lt;!&ndash;    app:springStiffness="500"&ndash;&gt;-->
-    <!--&lt;!&ndash;    app:springDamping="30"&ndash;&gt;-->
-    <!--    <Transition-->
-    <!--        android:id="@+id/trans_1"-->
-    <!--        app:constraintSetStart="@id/step1"-->
-    <!--        app:constraintSetEnd="@id/step2"-->
-    <!--        app:springMass="0">-->
-    <!--&lt;!&ndash;        app:duration="5000"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:autoCompleteMode="spring"&ndash;&gt;-->
-    <!--        <OnSwipe-->
-    <!--            app:dragDirection="dragDown"-->
-    <!--            app:touchAnchorId="@id/top_bar_layout"-->
-    <!--            app:touchAnchorSide="middle" />-->
-
-    <!--&lt;!&ndash;        <KeyAttribute&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:framePosition="100"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:motionTarget="@id/top_bar_layout">&ndash;&gt;-->
-    <!--&lt;!&ndash;            <CustomAttribute&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:attributeName="background"&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:customColorDrawableValue="@color/transparent" />&ndash;&gt;-->
-    <!--&lt;!&ndash;        </KeyAttribute>&ndash;&gt;-->
-    <!--    </Transition>-->
-
-    <!--&lt;!&ndash;    <Transition&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:id="@+id/trans_2"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetStart="@id/step2"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetEnd="@id/step3"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:duration="5000"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:springStiffness="500"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:springDamping="30"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:springMass="1"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:autoCompleteMode="spring">&ndash;&gt;-->
-    <!--&lt;!&ndash;        <OnSwipe&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:dragDirection="dragUp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorId="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorSide="middle" />&ndash;&gt;-->
-    <!--&lt;!&ndash;    </Transition>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;    <Transition&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:id="@+id/trans_3"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetStart="@id/step3"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetEnd="@id/step2"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:duration="1000">&ndash;&gt;-->
-    <!--&lt;!&ndash;        <OnSwipe&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:dragDirection="dragDown"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorId="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorSide="middle" />&ndash;&gt;-->
-    <!--&lt;!&ndash;    </Transition>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;    <Transition&ndash;&gt;-->
-    <!--&lt;!&ndash;        android:id="@+id/trans_4"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetStart="@id/step2"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:constraintSetEnd="@id/step1"&ndash;&gt;-->
-    <!--&lt;!&ndash;        app:duration="1000">&ndash;&gt;-->
-    <!--&lt;!&ndash;        <OnSwipe&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:dragDirection="dragDown"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorId="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:touchAnchorSide="middle" />&ndash;&gt;-->
-    <!--&lt;!&ndash;        &lt;!&ndash;        app:springStiffness="500"&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;        &lt;!&ndash;        app:springDamping="30"&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;        &lt;!&ndash;        app:springMass="1"&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;        &lt;!&ndash;        app:autoCompleteMode="spring"&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;    </Transition>&ndash;&gt;-->
-
-    <!--    <ConstraintSet android:id="@+id/step1">-->
-    <!--        <Constraint-->
-    <!--            android:id="@+id/image_preview"-->
-    <!--            android:layout_width="36dp"-->
-    <!--            android:layout_height="36dp"-->
-    <!--            app:layout_constraintStart_toStartOf="@+id/top_bar_layout"-->
-    <!--            app:layout_constraintTop_toTopOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"-->
-    <!--            app:layout_constraintHorizontal_bias="0.1">-->
-    <!--            <CustomAttribute-->
-    <!--                app:attributeName="roundPercent"-->
-    <!--                app:customFloatValue="1" />-->
-    <!--        </Constraint>-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/top_bar_layout"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="100dp" />-->
-    <!--        -->
-    <!--&lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/layout_profile_metadata"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginTop="-30dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginEnd="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginBottom="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintTop_toBottomOf="@+id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="@+id/parent"/>&ndash;&gt;-->
-    <!--    </ConstraintSet>-->
-
-    <!--    <ConstraintSet android:id="@+id/step2">-->
-    <!--&lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/image_preview"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="36dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="36dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginTop="100dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintTop_toTopOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintHorizontal_bias="0.5">&ndash;&gt;-->
-    <!--&lt;!&ndash;            <CustomAttribute&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:attributeName="roundPercent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:customFloatValue="1" />&ndash;&gt;-->
-    <!--&lt;!&ndash;        </Constraint>&ndash;&gt;-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/top_bar_layout"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="550dp" />-->
-
-    <!--&lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/layout_profile_metadata"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginEnd="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginTop="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginBottom="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintTop_toBottomOf="@+id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/parent" />&ndash;&gt;-->
-    <!--    </ConstraintSet>-->
-
-    <!--    <ConstraintSet android:id="@+id/step3">-->
-    <!--&lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/image_preview"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="200dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginTop="30dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintTop_toTopOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintHorizontal_bias="0.5">&ndash;&gt;-->
-    <!--&lt;!&ndash;            <CustomAttribute&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:attributeName="roundPercent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:customFloatValue="0" />&ndash;&gt;-->
-    <!--&lt;!&ndash;        </Constraint>&ndash;&gt;-->
-
-    <!--        <Constraint-->
-    <!--            android:id="@+id/top_bar_layout"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="750dp" />-->
-
-    <!--&lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/layout_profile_metadata"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginEnd="10dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginTop="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_marginBottom="8dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintTop_toBottomOf="@+id/top_bar_layout"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/parent" />&ndash;&gt;-->
-    <!--    </ConstraintSet>-->
-
-    <!--</MotionScene>-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/name_of_chat_large"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:visibility="invisible"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/image_full"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/image_full" />&ndash;&gt;-->
-
-
-    <!--    &lt;!&ndash;        <KeyFrameSet>&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:framePosition="50"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:motionTarget="@id/image_full">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:attributeName="roundPercent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:customFloatValue="0.8" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;            </KeyAttribute>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintHorizontal_bias="0.2"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/image_full"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="36dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="36dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@id/image_preview"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintEnd_toEndOf="@id/image_preview"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toStartOf="@id/image_preview"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="@id/image_preview">&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:attributeName="roundPercent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:customFloatValue="1" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </Constraint>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/name_of_chat"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:gravity="center_vertical"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:visibility="visible"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/image_preview"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toEndOf="@+id/image_preview"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="@+id/image_preview"/>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:framePosition="100"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:motionTarget="@id/top_bar_layout">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:attributeName="background"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:customColorDrawableValue="@color/transparent" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;            </KeyAttribute>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:framePosition="100"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:motionTarget="@id/name_of_chat_large">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:attributeName="background"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:customColorDrawableValue="@color/transparent" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;            </KeyAttribute>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:framePosition="30"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:motionTarget="@id/top_bar_layout">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:attributeName="background"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:customColorDrawableValue="@color/transparent" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;            </KeyAttribute>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;            <KeyAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:framePosition="30"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:motionTarget="@id/name_of_chat_large">&ndash;&gt;-->
-    <!--    &lt;!&ndash;                <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:attributeName="background"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                    app:customColorDrawableValue="@color/transparent" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;            </KeyAttribute>&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </KeyFrameSet>&ndash;&gt;-->
-
-
-    <!--    &lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintHorizontal_bias="0.5"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;        app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/image_full"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="350dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="parent">&ndash;&gt;-->
-    <!--    &lt;!&ndash;            <CustomAttribute&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:attributeName="roundPercent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;                app:customFloatValue="0" />&ndash;&gt;-->
-    <!--    &lt;!&ndash;        </Constraint>&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/name_of_chat"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_marginStart="20dp"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:visibility="invisible"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/back_button"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toStartOf="@+id/back_button"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="@+id/back_button" />&ndash;&gt;-->
-
-    <!--    &lt;!&ndash;        <Constraint&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:id="@+id/name_of_chat_large"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            android:visibility="visible"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="@+id/image_full"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintHorizontal_bias="0.2"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-    <!--    &lt;!&ndash;            app:layout_constraintVertical_bias="0.2" />&ndash;&gt;-->

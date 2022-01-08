@@ -14,8 +14,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:padding="@dimen/grid_item_spacing"
-        android:orientation="horizontal"
-        android:background="@color/white">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/media_item_image"
